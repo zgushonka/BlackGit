@@ -12,7 +12,7 @@ extension GitSearchViewController {
 
 final class GitSearchViewController: UITableViewController {
     private var viewModel: GitSearchViewModel?
-    private lazy var searchBar:UISearchBar = UISearchBar()
+    private lazy var searchBar: UISearchBar = UISearchBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,10 @@ final class GitSearchViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryCell.reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: RepositoryCell.reuseIdentifier,
+            for: indexPath
+        )
 
         if let cell = cell as? RepositoryCell,
            let repository = viewModel?.repository(for: indexPath.row) {

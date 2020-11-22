@@ -134,11 +134,11 @@
 			isa = PBXGroup;
 			children = (
 				7D593BE4256AD7070080ACD2 /* RepositoryTests.swift */,
-				7D957486256AEB5F0032C8D3 /* GitSearchAssemblyTests.swift */,
 				7D593C2B256AD94B0080ACD2 /* GitSearchResponseTests.swift */,
-				7D593C33256ADAC30080ACD2 /* GitSearchViewModelTests.swift */,
+				7D957486256AEB5F0032C8D3 /* GitSearchAssemblyTests.swift */,
 				7D95747E256AE5750032C8D3 /* GitSearchViewControllerTests.swift */,
 				7D957482256AE86F0032C8D3 /* RepositoryCellTests.swift */,
+				7D593C33256ADAC30080ACD2 /* GitSearchViewModelTests.swift */,
 				7D95748A256AEC240032C8D3 /* ApiTests.swift */,
 				7D957496256AF5E40032C8D3 /* GitSearchServiceTests.swift */,
 				7D9574A4256AFBFC0032C8D3 /* ImageServiceTests.swift */,

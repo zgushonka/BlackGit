@@ -32,11 +32,40 @@ class RepositoryTests: XCTestCase {
         XCTAssertNil(sut.details)
         XCTAssertNil(sut.ownerImageURL)
     }
+
+    func testDecodable() throws {
+        sut = try JSONDecoder().decode(Repository.self, from: Repository.jsonData)
+
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut.id, 4242)
+        XCTAssertEqual(sut.name, "json name")
+        XCTAssertEqual(sut.details, "json details")
+        XCTAssertNotNil(sut.ownerImageURL)
+        XCTAssertEqual(sut.ownerImageURL?.absoluteString, "www.avatar_url.com")
+    }
 }
 
 extension Repository {
     static var mock: Repository {
         .init(id: 42, name: "mock name", details: "mock details", ownerImageURL: nil)
+    }
+
+    static var jsonString: String {
+        """
+        {
+          "id" : 4242,
+          "name" : "json name",
+          "description" : "json details",
+
+          "owner" : {
+            "avatar_url" : "www.avatar_url.com",
+          }
+        }
+        """
+    }
+
+    static var jsonData: Data {
+        Data(jsonString.utf8)
     }
 }
 
