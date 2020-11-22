@@ -23,7 +23,10 @@ final class GitSearchServiceImpl: GitSearchService {
         self.throttler = throttler
     }
     
-    func searchRepositories(with query: String, completion: @escaping (Result<[Repository], Error>) -> Void) {
+    func searchRepositories(
+        with query: String,
+        completion: @escaping (Result<[Repository], Error>) -> Void
+    ) {
         let networkRequestBlock = {
             debugPrint("network - \(query)")
             guard let url = API.Search.repositories(query).makeURL() else {
@@ -44,7 +47,10 @@ final class GitSearchServiceImpl: GitSearchService {
         }
     }
     
-    private func networkSearch(with url: URL, completion: @escaping (Result<[Repository], Error>) -> Void) {
+    private func networkSearch(
+        with url: URL,
+        completion: @escaping (Result<[Repository], Error>) -> Void
+    ) {
         var request = URLRequest(url: url)
         request.cachePolicy = .useProtocolCachePolicy
         request.httpMethod = "get"
