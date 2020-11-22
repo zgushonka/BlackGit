@@ -9,7 +9,7 @@ final class Throttler {
     }
 
     func throttle(block: @escaping () -> Void) {
-        searchTask?.cancel()
+        cancel()
         let task = DispatchWorkItem {
             block()
         }
