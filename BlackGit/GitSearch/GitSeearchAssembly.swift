@@ -3,7 +3,9 @@ import Foundation
 enum GitSearchAssembly {
     static func makeVC() -> GitSearchViewController {
         let imageService = ImageServiceImpl()
-        let gitSearchService = GitSearchServiceImpl(throttler: Throttler(timeInterval: 0.5))
+        let gitSearchService = GitSearchServiceImpl(
+            throttler: Throttler(timeInterval: 1)
+        )
 
         let viewModel = GitSearchViewModelImpl(
             imageService: imageService,
