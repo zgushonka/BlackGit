@@ -3,11 +3,13 @@ import XCTest
 
 class RepositoryCellTests: XCTestCase {
     var sut: RepositoryCell!
+    var repository: Repository!
 
     override func setUpWithError() throws {
         let vc = GitSearchViewController.make(with: GitSearchViewModelMock())
         let _ = vc.view
 
+        repository = .mock
         let cell = vc.tableView.dequeueReusableCell(withIdentifier: RepositoryCell.reuseIdentifier)
         sut = cell as? RepositoryCell
     }
@@ -21,9 +23,10 @@ class RepositoryCellTests: XCTestCase {
     }
 
     func testSetup() {
-        sut.setup(with: .mock)
-        XCTAssertEqual(sut.titleLabel.text, "mock name")
-        XCTAssertEqual(sut.detailsLabel.text, "mock details")
+        sut.setup(with: repository)
+        XCTAssertEqual(sut.id, repository.id)
+        XCTAssertEqual(sut.titleLabel.text, repository.name)
+        XCTAssertEqual(sut.detailsLabel.text, repository.details)
     }
 
     func testSetImage() {
