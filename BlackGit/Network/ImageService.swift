@@ -44,7 +44,6 @@ final class ImageServiceImpl: ImageService {
                 return
             }
             completion(.success(anImage))
-
         }.resume()
     }
 }

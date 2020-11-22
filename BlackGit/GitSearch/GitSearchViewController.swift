@@ -29,11 +29,17 @@ final class GitSearchViewController: UITableViewController {
         searchBar.becomeFirstResponder()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         viewModel?.repositoriesCount ?? 0
     }
 
-    override func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: RepositoryCell.reuseIdentifier,
             for: indexPath
