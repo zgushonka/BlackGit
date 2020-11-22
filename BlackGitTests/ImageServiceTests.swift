@@ -27,7 +27,7 @@ class ImageServiceTests: XCTestCase {
             }
         })
 
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
 
     func testSearchRequestFail() throws {
@@ -38,7 +38,7 @@ class ImageServiceTests: XCTestCase {
             }
         })
 
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
 }
 

@@ -12,7 +12,7 @@ extension GitSearchViewController {
 
 final class GitSearchViewController: UITableViewController {
     private var viewModel: GitSearchViewModel?
-    private lazy var searchBar: UISearchBar = UISearchBar()
+    private weak var searchBar: UISearchBar?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ final class GitSearchViewController: UITableViewController {
         }
 
         setupSearchBar()
-        searchBar.becomeFirstResponder()
+        searchBar?.becomeFirstResponder()
     }
 
     override func tableView(
@@ -68,12 +68,14 @@ final class GitSearchViewController: UITableViewController {
 
 extension GitSearchViewController: UISearchBarDelegate {
     private func setupSearchBar() {
+        let searchBar = UISearchBar()
         searchBar.searchBarStyle = .prominent
         searchBar.placeholder = "Search Git by Name"
         searchBar.sizeToFit()
         searchBar.delegate = self
         searchBar.returnKeyType = .done
         tableView.tableHeaderView = searchBar
+        self.searchBar = searchBar
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

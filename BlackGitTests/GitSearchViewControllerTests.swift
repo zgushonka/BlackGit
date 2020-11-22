@@ -14,6 +14,8 @@ class GitSearchViewControllerTests: XCTestCase {
 
     func testOutlets() throws {
         XCTAssertNotNil(sut.tableView)
+        XCTAssertNotNil(sut.tableView.tableHeaderView)
+        XCTAssert(sut.tableView.tableHeaderView is UISearchBar)
     }
 
     func testSearchBar() throws {
