@@ -59,6 +59,7 @@ final class GitSearchServiceImpl: GitSearchService {
         session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
+                return
             }
             guard let data = data,
                   let response = try? decoder.decode(GitSearchResponse.self, from: data) else {

@@ -78,23 +78,22 @@ extension GitSearchServiceTests {
     }
 }
 
-class GitSearchViewModelMock: GitSearchViewModel {
-    var screenTitle: String = "screenTitle"
+class GitSearchServiceMock: GitSearchService {
+    var invocationCount: Int = 0
 
-    var repositoriesCount: Int = 1
-
-    func repository(for index: Int) -> Repository? {
-        return .mock
+    func searchRepositories(
+        with query: String,
+        completion: @escaping (Result<[Repository], Error>) -> Void
+    ) {
+        invocationCount += 1
+        switch query {
+        case "test":
+            completion(.success([.mock]))
+        case "":
+            invocationCount = 42
+            completion(.success([]))
+        default:
+            completion(.failure(NetworkError.wrongRequest))
+        }
     }
-
-    var searchInvoded = false
-    var searhedString: String? = nil
-    func search(by query: String) {
-        searchInvoded = true
-        searhedString = query
-    }
-
-    var onUpdate: (() -> Void)? = nil
-
-    var imageService: ImageService = ImageServiceMock()
 }

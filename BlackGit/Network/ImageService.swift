@@ -37,6 +37,7 @@ final class ImageServiceImpl: ImageService {
         session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
+                return
             }
             let image = data.flatMap { UIImage(data: $0) }
             guard let anImage = image else {
